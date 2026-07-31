@@ -1,7 +1,6 @@
 extends AnimatedSprite2D
 
 @export var snowball = load("res://scenes/snowball.tscn")
-@onready var player = $"../Player"
 
 @onready var mouseposition = get_global_mouse_position()
 @onready var angle = wrapf(rotation_degrees, 0.0, 360.0)
@@ -21,11 +20,6 @@ func turn() -> void:
 	var target_radians = global_position.angle_to_point(mouseposition)
 	
 	angle = wrapf(rad_to_deg(target_radians), 0.0, 360.0)
-	
-	if angle  >= 90 && angle <= 270:
-		player.flip_h = true		
-	else: 
-		player.flip_h = false
 	
 	if Global.gun != "throw":
 		mouseposition = get_global_mouse_position()
