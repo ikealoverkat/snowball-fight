@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://l5gqo7pe3h4a"]
+
+[ext_resource type="Texture2D" uid="uid://dhjblusd21hdo" path="res://assets/big-gun.png" id="1_vy7pj"]
+[ext_resource type="Texture2D" uid="uid://b3qbmuhgv6lam" path="res://assets/machine-gun.png" id="2_nblr6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwkg4"]
+size = Vector2(54, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nqsg0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vy7pj")
+}],
+"loop": true,
+"name": &"big_gun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nblr6")
+}],
+"loop": true,
+"name": &"machine_gun",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hwkg4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05499999, 0.054999996)
+sprite_frames = SubResource("SpriteFrames_nqsg0")
+animation = &"big_gun"

@@ -23,5 +23,15 @@ position = Vector2(116, 347)
 position = Vector2(583, 318)
 script = ExtResource("5_iywne")
 
+[node name="ProgressBar" type="ProgressBar" parent="Camera2D"]
+offset_left = -573.0
+offset_top = -307.0
+offset_right = -334.0
+offset_bottom = -276.0
+max_value = 50.0
+step = 1.0
+
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
