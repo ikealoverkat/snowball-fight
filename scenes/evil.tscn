@@ -43,7 +43,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.033333335, 0.36666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.4639923, 0.7889381, 0.8768084, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.59607846), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_3ate8"]
