@@ -1,9 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://3j3ivo3mt68m"]
+[gd_scene load_steps=26 format=3 uid="uid://3j3ivo3mt68m"]
 
 [ext_resource type="Script" uid="uid://cqlp3evpraxqb" path="res://scripts/evil.gd" id="1_7mqv5"]
 [ext_resource type="Texture2D" uid="uid://bbdigs2c5xgju" path="res://assets/evil.png" id="1_t4s5b"]
 [ext_resource type="Texture2D" uid="uid://3idxxg2tww76" path="res://assets/evil-hit-2.png" id="3_l7c6x"]
 [ext_resource type="Texture2D" uid="uid://04u0g2lmuhss" path="res://assets/evil-hit.png" id="4_rt2iu"]
+[ext_resource type="Texture2D" uid="uid://dhjblusd21hdo" path="res://assets/big-gun.png" id="5_2shto"]
+[ext_resource type="Texture2D" uid="uid://b3qbmuhgv6lam" path="res://assets/machine-gun.png" id="6_sujnm"]
+[ext_resource type="Texture2D" uid="uid://dvadfba5ubvyh" path="res://assets/throw-1.png" id="7_gvav6"]
+[ext_resource type="Texture2D" uid="uid://dm2urmyieqjbr" path="res://assets/throw-2.png" id="8_usk2r"]
+[ext_resource type="Texture2D" uid="uid://cc263dw1wyr8d" path="res://assets/throw-3.png" id="9_y3dhu"]
+[ext_resource type="Texture2D" uid="uid://bg3o75p3p1q1l" path="res://assets/throw-4.png" id="10_ntnk4"]
+[ext_resource type="Texture2D" uid="uid://0cn52e4wyxep" path="res://assets/throw-5.png" id="11_ixypk"]
+[ext_resource type="Script" uid="uid://byl7ksfrp8n0a" path="res://scripts/enemy_follow.gd" id="12_2shto"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8uusd"]
 animations = [{
@@ -29,6 +37,193 @@ animations = [{
 "name": &"hit",
 "speed": 7.0
 }]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5hwsq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2shto")
+}],
+"loop": true,
+"name": &"big_gun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_sujnm")
+}],
+"loop": true,
+"name": &"machine_gun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_gvav6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_usk2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_y3dhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ntnk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ixypk")
+}],
+"loop": false,
+"name": &"throw_active",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_gvav6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_usk2r")
+}],
+"loop": true,
+"name": &"throw_idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ir15t"]
+resource_name = "throw_idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(72.36844, 65.78945)]
+}
+
+[sub_resource type="Animation" id="Animation_ca42v"]
+resource_name = "throw_active"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.3, 0.6),
+"transitions": PackedFloat32Array(4.438277, 0.3186403, 1),
+"update": 0,
+"values": [Vector2(44.798, 45.874), Vector2(79.278, 44.014), Vector2(35.708, 48.459)]
+}
+
+[sub_resource type="Animation" id="Animation_rysoc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(72.36844, 65.78945)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.46710518, 0.46710518)]
+}
+
+[sub_resource type="Animation" id="Animation_ssvqc"]
+resource_name = "gun_idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1.3660405, 0.39229214, 1),
+"update": 0,
+"values": [Vector2(120, 80), Vector2(120, 85), Vector2(120, 80)]
+}
+
+[sub_resource type="Animation" id="Animation_264po"]
+resource_name = "gun_shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.06666666, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.2617993877991494, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.100000024, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(120, 80), Vector2(100, 80), Vector2(120, 80)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.33333334, 0.53333336, 0.8666667),
+"transitions": PackedFloat32Array(1, 0.3077861, 1.8025012, 0.48296815, 1),
+"update": 0,
+"values": [Vector2(0.46710518, 0.46710518), Vector2(0.4, 0.6), Vector2(0.5, 0.4), Vector2(0.43, 0.47), Vector2(0.467, 0.467)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ssvqc"]
+_data = {
+&"RESET": SubResource("Animation_rysoc"),
+&"gun_active": SubResource("Animation_264po"),
+&"gun_idle": SubResource("Animation_ssvqc"),
+&"throw_active": SubResource("Animation_ca42v"),
+&"throw_idle": SubResource("Animation_ir15t")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mqv5"]
 size = Vector2(70, 70)
@@ -191,6 +386,24 @@ position = Vector2(0, 1)
 scale = Vector2(0.13565892, 0.13565892)
 sprite_frames = SubResource("SpriteFrames_8uusd")
 autoplay = "default"
+
+[node name="Gun" type="AnimatedSprite2D" parent="Evil"]
+position = Vector2(72.36844, 65.78945)
+scale = Vector2(0.46710518, 0.46710518)
+sprite_frames = SubResource("SpriteFrames_5hwsq")
+animation = &"throw_active"
+autoplay = "throw_idle"
+offset = Vector2(219.29834, 0)
+script = ExtResource("12_2shto")
+
+[node name="Timer" type="Timer" parent="Evil/Gun"]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Evil/Gun"]
+libraries = {
+&"": SubResource("AnimationLibrary_ssvqc")
+}
+autoplay = "throw_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

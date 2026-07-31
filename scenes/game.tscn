@@ -306,7 +306,7 @@ repeat_size = Vector2(5000, 0)
 [node name="Floor" type="Sprite2D" parent="Parallax2D"]
 texture = ExtResource("2_ssvqc")
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(116, 347)
 scale = Vector2(0.15199995, 0.15199995)
 script = ExtResource("1_lbhrr")
@@ -326,7 +326,7 @@ position = Vector2(46.05269, 223.68442)
 scale = Vector2(0.7709705, 0.7709705)
 sprite_frames = SubResource("SpriteFrames_kvuet")
 autoplay = "default"
-frame_progress = 0.09432175
+frame_progress = 0.86808914
 offset = Vector2(-59.7334, -290.13354)
 
 [node name="Gun" type="AnimatedSprite2D" parent="Player"]
