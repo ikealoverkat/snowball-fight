@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal damaged
+
 @export var hurt_text = load("res://scenes/hurt-text.tscn")
 
 @export var speed = 400
@@ -20,7 +22,7 @@ func add_hurt_text(dmg):
 	hurt_text_instance.global_position.y = global_position.y - randi_range(55, 70)
 	hurt_text_instance.global_position.x = global_position.x + randi_range(12, 25)	
 
-func get_input(delta: float):
+func get_input(_delta: float):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
 	
@@ -55,9 +57,14 @@ func _physics_process(delta: float) -> void:
 func take_damage(damage) -> void:
 	Global.playerHealth = Global.playerHealth - damage
 	taking_damage = true
+	emit_signal("damaged")
 	add_hurt_text(str(damage))	
 	$PlayerAnim.play("hit")	
 	$Player.play("hit")
 	await $Player.animation_finished
 	$Player.play("default")
 	taking_damage = false
+	
+	if Global.playerHealth <= 0:
+		Global.playerHealth = 0		
+		emit_signal("died")

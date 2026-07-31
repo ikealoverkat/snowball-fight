@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://0rxirx3rnao5"]
+[gd_scene load_steps=6 format=3 uid="uid://0rxirx3rnao5"]
 
 [ext_resource type="Script" uid="uid://eit0tedvyajq" path="res://scripts/game.gd" id="1_p57ef"]
 [ext_resource type="Texture2D" uid="uid://cilsqcovt3gs" path="res://assets/floor.png" id="2_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://cs3olfitn7xmv" path="res://scenes/player.tscn" id="3_lbhrr"]
 [ext_resource type="Script" uid="uid://u3v3n2l0e4tt" path="res://scripts/camera.gd" id="5_iywne"]
+[ext_resource type="Script" uid="uid://d4j3mn4dhtt1m" path="res://scripts/healthbar.gd" id="5_p57ef"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_p57ef")
@@ -23,13 +24,14 @@ position = Vector2(116, 347)
 position = Vector2(583, 318)
 script = ExtResource("5_iywne")
 
-[node name="ProgressBar" type="ProgressBar" parent="Camera2D"]
-offset_left = -573.0
-offset_top = -307.0
-offset_right = -334.0
-offset_bottom = -276.0
+[node name="Healthbar" type="ProgressBar" parent="Camera2D"]
+offset_left = -542.0
+offset_top = -297.0
+offset_right = -303.0
+offset_bottom = -266.0
 max_value = 50.0
 step = 1.0
+script = ExtResource("5_p57ef")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

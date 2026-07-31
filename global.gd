@@ -3,4 +3,5 @@ extends Node
 
 static var distance: float = 0
 static var gun: String = "throw"
-static var playerHealth: int = 50
+static var playerHealthMax: int = 50
+static var playerHealth: int = playerHealthMax
