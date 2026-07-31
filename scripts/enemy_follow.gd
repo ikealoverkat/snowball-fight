@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-@export var snowball = load("res://scenes/snowball.tscn")
+@export var snowball = load("res://scenes/evil_snowball.tscn")
 var player: Node2D = null
 
 @export var time_left: float = randf_range(0.5, 4.0)

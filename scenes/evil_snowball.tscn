@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://i01qnt6o3p3q"]
 
 [ext_resource type="Script" uid="uid://cvduutccdcuo6" path="res://scripts/evil_snowball.gd" id="1_nppsr"]
-[ext_resource type="Texture2D" uid="uid://bcfbtfkdsb1bt" path="res://assets/snowball.png" id="2_ntrsu"]
+[ext_resource type="Texture2D" uid="uid://clk6eugbys8ih" path="res://assets/evil-snowball.png" id="2_nppsr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xsgkx"]
 radius = 86.666664
@@ -12,7 +12,7 @@ script = ExtResource("1_nppsr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_ntrsu")
+texture = ExtResource("2_nppsr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)

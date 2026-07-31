@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://0rxirx3rnao5"]
+[gd_scene load_steps=33 format=3 uid="uid://0rxirx3rnao5"]
 
 [ext_resource type="Script" uid="uid://d22n13n5tyu1u" path="res://scripts/player.gd" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://eit0tedvyajq" path="res://scripts/game.gd" id="1_p57ef"]
@@ -22,6 +22,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21or3"]
 size = Vector2(493.42123, 473.6842)
 
+[sub_resource type="Animation" id="Animation_5newe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.7709705, 0.7709705)]
+}
+
 [sub_resource type="Animation" id="Animation_1kice"]
 resource_name = "idle"
 loop_mode = 1
@@ -36,21 +51,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1.5157164, 0.43527538, 1),
 "update": 0,
 "values": [Vector2(0.7709705, 0.7709705), Vector2(0.8, 0.76), Vector2(0.7709705, 0.7709705)]
-}
-
-[sub_resource type="Animation" id="Animation_5newe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.7709705, 0.7709705)]
 }
 
 [sub_resource type="Animation" id="Animation_37s47"]
@@ -70,9 +70,37 @@ tracks/0/keys = {
 "values": [Vector2(0.7709705, 0.7709705), Vector2(0.69, 0.85), Vector2(0.95, 0.7), Vector2(0.7709705, 0.7709705)]
 }
 
+[sub_resource type="Animation" id="Animation_bt5mj"]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.38),
+"transitions": PackedFloat32Array(4.141059, 0.18946455, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.9), Vector2(0.9, 0.6), Vector2(0.77, 0.77)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0133333355, 0.03333333, 0.23333333, 0.38),
+"transitions": PackedFloat32Array(0.25000027, 0.2773924, 0.40612638, 1),
+"update": 0,
+"values": [0.0, -0.4363323129985824, 0.05235987755982989, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5newe"]
 _data = {
 &"RESET": SubResource("Animation_5newe"),
+&"hit": SubResource("Animation_bt5mj"),
 &"idle": SubResource("Animation_1kice"),
 &"move": SubResource("Animation_37s47")
 }
@@ -102,10 +130,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_dinhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kvpfn")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
-"speed": 3.0
+"speed": 8.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1kice"]
@@ -158,39 +189,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_ir15t"]
-resource_name = "throw_idle"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(72.36844, 65.78945)]
-}
-
-[sub_resource type="Animation" id="Animation_ca42v"]
-resource_name = "throw_active"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.03333333, 0.3, 0.6),
-"transitions": PackedFloat32Array(4.438277, 0.3186403, 1),
-"update": 0,
-"values": [Vector2(44.798, 45.874), Vector2(79.278, 44.014), Vector2(35.708, 48.459)]
-}
-
 [sub_resource type="Animation" id="Animation_rysoc"]
 length = 0.001
 tracks/0/type = "value"
@@ -228,23 +226,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.46710518, 0.46710518)]
-}
-
-[sub_resource type="Animation" id="Animation_ssvqc"]
-resource_name = "gun_idle"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8),
-"transitions": PackedFloat32Array(1.3660405, 0.39229214, 1),
-"update": 0,
-"values": [Vector2(120, 80), Vector2(120, 85), Vector2(120, 80)]
 }
 
 [sub_resource type="Animation" id="Animation_264po"]
@@ -286,6 +267,56 @@ tracks/2/keys = {
 "values": [Vector2(0.46710518, 0.46710518), Vector2(0.4, 0.6), Vector2(0.5, 0.4), Vector2(0.43, 0.47), Vector2(0.467, 0.467)]
 }
 
+[sub_resource type="Animation" id="Animation_ssvqc"]
+resource_name = "gun_idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1.3660405, 0.39229214, 1),
+"update": 0,
+"values": [Vector2(120, 80), Vector2(120, 85), Vector2(120, 80)]
+}
+
+[sub_resource type="Animation" id="Animation_ca42v"]
+resource_name = "throw_active"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.3, 0.6),
+"transitions": PackedFloat32Array(4.438277, 0.3186403, 1),
+"update": 0,
+"values": [Vector2(44.798, 45.874), Vector2(79.278, 44.014), Vector2(35.708, 48.459)]
+}
+
+[sub_resource type="Animation" id="Animation_ir15t"]
+resource_name = "throw_idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(72.36844, 65.78945)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ssvqc"]
 _data = {
 &"RESET": SubResource("Animation_rysoc"),
@@ -325,8 +356,10 @@ autoplay = "idle"
 position = Vector2(46.05269, 223.68442)
 scale = Vector2(0.7709705, 0.7709705)
 sprite_frames = SubResource("SpriteFrames_kvuet")
+animation = &"hit"
 autoplay = "default"
-frame_progress = 0.86808914
+frame = 2
+frame_progress = 1.0
 offset = Vector2(-59.7334, -290.13354)
 
 [node name="Gun" type="AnimatedSprite2D" parent="Player"]

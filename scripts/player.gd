@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var health = 50
 @export var mouseposition: Vector2
 @export var turn_speed: float = 5.0
+var taking_damage = false
 
 const MAX_TURN_ANGLE = deg_to_rad(15.0)
 var movement_angle: float = 0.0
@@ -25,9 +26,10 @@ func get_input(delta: float):
 	else:
 		$Player.flip_h = false
 		
-	if input_direction != Vector2.ZERO:
+	if input_direction != Vector2.ZERO and not taking_damage:
 		$PlayerAnim.play("move")
-	else: $PlayerAnim.play("idle")
+	elif input_direction == Vector2.ZERO and not taking_damage:
+		$PlayerAnim.play("idle")
 
 func turn(delta: float) -> void:
 	mouseposition = get_global_mouse_position()
@@ -45,4 +47,12 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damage) -> void:
 	health = health - damage
+	taking_damage = true
 	print(health)
+	print(taking_damage)
+	$PlayerAnim.play("hit")	
+	$Player.play("hit")
+	await $Player.animation_finished
+	$Player.play("default")
+	taking_damage = false
+	print(taking_damage)

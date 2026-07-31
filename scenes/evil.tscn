@@ -88,39 +88,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_ir15t"]
-resource_name = "throw_idle"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(72.36844, 65.78945)]
-}
-
-[sub_resource type="Animation" id="Animation_ca42v"]
-resource_name = "throw_active"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.03333333, 0.3, 0.6),
-"transitions": PackedFloat32Array(4.438277, 0.3186403, 1),
-"update": 0,
-"values": [Vector2(44.798, 45.874), Vector2(79.278, 44.014), Vector2(35.708, 48.459)]
-}
-
 [sub_resource type="Animation" id="Animation_rysoc"]
 length = 0.001
 tracks/0/type = "value"
@@ -158,23 +125,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.46710518, 0.46710518)]
-}
-
-[sub_resource type="Animation" id="Animation_ssvqc"]
-resource_name = "gun_idle"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8),
-"transitions": PackedFloat32Array(1.3660405, 0.39229214, 1),
-"update": 0,
-"values": [Vector2(120, 80), Vector2(120, 85), Vector2(120, 80)]
 }
 
 [sub_resource type="Animation" id="Animation_264po"]
@@ -216,6 +166,56 @@ tracks/2/keys = {
 "values": [Vector2(0.46710518, 0.46710518), Vector2(0.4, 0.6), Vector2(0.5, 0.4), Vector2(0.43, 0.47), Vector2(0.467, 0.467)]
 }
 
+[sub_resource type="Animation" id="Animation_ssvqc"]
+resource_name = "gun_idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1.3660405, 0.39229214, 1),
+"update": 0,
+"values": [Vector2(120, 80), Vector2(120, 85), Vector2(120, 80)]
+}
+
+[sub_resource type="Animation" id="Animation_ca42v"]
+resource_name = "throw_active"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.3, 0.6),
+"transitions": PackedFloat32Array(4.438277, 0.3186403, 1),
+"update": 0,
+"values": [Vector2(44.798, 45.874), Vector2(79.278, 44.014), Vector2(35.708, 48.459)]
+}
+
+[sub_resource type="Animation" id="Animation_ir15t"]
+resource_name = "throw_idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(72.36844, 65.78945)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ssvqc"]
 _data = {
 &"RESET": SubResource("Animation_rysoc"),
@@ -227,46 +227,6 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mqv5"]
 size = Vector2(70, 70)
-
-[sub_resource type="Animation" id="Animation_7mqv5"]
-resource_name = "hit"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.02, 0.2, 0.4),
-"transitions": PackedFloat32Array(4.141059, 0.18946455, 1),
-"update": 0,
-"values": [Vector2(0.8, 1.2), Vector2(1.2, 0.8), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.033333335, 0.16666667, 0.26666668, 0.4),
-"transitions": PackedFloat32Array(0.25000027, 0.2773924, 2.21914, 1),
-"update": 0,
-"values": [0.0, 0.17453292519943295, -0.05235987755982989, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Evil:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.36666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.59607846), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_3ate8"]
 length = 0.001
@@ -369,6 +329,46 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1.8025014, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7mqv5"]
+resource_name = "hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.02, 0.2, 0.4),
+"transitions": PackedFloat32Array(4.141059, 0.18946455, 1),
+"update": 0,
+"values": [Vector2(0.8, 1.2), Vector2(1.2, 0.8), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 0.16666667, 0.26666668, 0.4),
+"transitions": PackedFloat32Array(0.25000027, 0.2773924, 2.21914, 1),
+"update": 0,
+"values": [0.0, 0.17453292519943295, -0.05235987755982989, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Evil:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.59607846), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l7c6x"]
