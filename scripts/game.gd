@@ -11,7 +11,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if timer.is_stopped():
+			spawnOpp()
+			timer.start()
  
 func spawnOpp() -> void:
 	var opp_instance = opp.instantiate()
@@ -24,13 +26,6 @@ func spawnOpp() -> void:
 		randf_range(camera_position.x - 400, camera_position.x + 400),
 		randf_range(camera_position.y - 250, camera_position.y + 250)
 	)
-	
 
 	opp_instance.global_position = random_position	
 	
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		if timer.is_stopped():
-			spawnOpp()
-			timer.start()

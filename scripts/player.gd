@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
+@export var hurt_text = load("res://scenes/hurt-text.tscn")
 
 @export var speed = 400
-@export var health = 50
 @export var mouseposition: Vector2
 @export var turn_speed: float = 5.0
 var taking_damage = false
@@ -10,8 +10,15 @@ var taking_damage = false
 const MAX_TURN_ANGLE = deg_to_rad(15.0)
 var movement_angle: float = 0.0
 
-func onready():
+func _ready() -> void:
 	$Player.flip_h = true
+
+func add_hurt_text(dmg):
+	var hurt_text_instance = hurt_text.instantiate()
+	add_child(hurt_text_instance)
+	hurt_text_instance.text = dmg
+	hurt_text_instance.global_position.y = global_position.y - randi_range(55, 70)
+	hurt_text_instance.global_position.x = global_position.x + randi_range(12, 25)	
 
 func get_input(delta: float):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -46,13 +53,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func take_damage(damage) -> void:
-	health = health - damage
+	Global.playerHealth = Global.playerHealth - damage
 	taking_damage = true
-	print(health)
-	print(taking_damage)
+	add_hurt_text(str(damage))	
 	$PlayerAnim.play("hit")	
 	$Player.play("hit")
 	await $Player.animation_finished
 	$Player.play("default")
 	taking_damage = false
-	print(taking_damage)
