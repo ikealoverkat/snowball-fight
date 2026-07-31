@@ -10,10 +10,15 @@ func _physics_process(_delta: float) -> void:
 	
 func take_damage(amount: int) -> void:
 		health = health - amount
-		$AnimationPlayer.play("hit")
 		
 		if health <= 0:
 			die()
+			
+		$AnimationPlayer.play("hit")		
+		$Evil.play("hit")
+		await $Evil.animation_finished
+		$Evil.play("default")
+		
 
 func die() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
