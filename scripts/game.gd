@@ -1,15 +1,16 @@
 extends Node2D
 
 @onready var timer = $Timer
-@export var time_left: float = 4.0
+@export var time_left: float = 1.0
 @export var opp = load("res://scenes/evil.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer.wait_time = time_left
+	spawnOpp()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
  
 func spawnOpp() -> void:
