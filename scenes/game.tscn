@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://0rxirx3rnao5"]
+[gd_scene load_steps=32 format=3 uid="uid://0rxirx3rnao5"]
 
 [ext_resource type="Script" uid="uid://d22n13n5tyu1u" path="res://scripts/player.gd" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://eit0tedvyajq" path="res://scripts/game.gd" id="1_p57ef"]
+[ext_resource type="Texture2D" uid="uid://cilsqcovt3gs" path="res://assets/floor.png" id="2_ssvqc"]
 [ext_resource type="Texture2D" uid="uid://dyehtitepd7hj" path="res://assets/player-1.png" id="3_0tnpc"]
 [ext_resource type="Script" uid="uid://dq32cvth06rnc" path="res://scripts/gun.gd" id="4_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://cojboywrj6shn" path="res://assets/player-2.png" id="4_vtaks"]
@@ -297,6 +298,14 @@ _data = {
 [node name="game" type="Node2D"]
 script = ExtResource("1_p57ef")
 
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scale = Vector2(0.9937136, 0.9999999)
+scroll_offset = Vector2(-3671, 318)
+repeat_size = Vector2(5000, 0)
+
+[node name="Floor" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("2_ssvqc")
+
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(116, 347)
 scale = Vector2(0.15199995, 0.15199995)
@@ -317,7 +326,7 @@ position = Vector2(46.05269, 223.68442)
 scale = Vector2(0.7709705, 0.7709705)
 sprite_frames = SubResource("SpriteFrames_kvuet")
 autoplay = "default"
-frame_progress = 0.62332594
+frame_progress = 0.09432175
 offset = Vector2(-59.7334, -290.13354)
 
 [node name="Gun" type="AnimatedSprite2D" parent="Player"]
