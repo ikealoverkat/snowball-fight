@@ -7,7 +7,9 @@ extends Node2D
 @export var min_time_left: float = 2.0
 @export var spawn_acceleration: float = 0.2
 
-@export var gun_time_left: float = 15.0
+@export var gun_time_left: float = 10.0
+@export var gun_min_time_left: float = 6.0
+@export var gun_spawn_acceleration: float = 0.2
 @export var opp = load("res://scenes/evil.tscn")
 @export var gun = load("res://scenes/dropped-gun.tscn")
 
@@ -16,6 +18,10 @@ func _ready() -> void:
 	timer.wait_time = time_left
 	timer.start() # Ensure timer starts right away
 	spawnOpp()
+	
+	gunTimer.wait_time = gun_time_left
+	gunTimer.start()
+	spawnGun()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -24,6 +30,11 @@ func _process(_delta: float) -> void:
 		
 		timer.wait_time = max(min_time_left, timer.wait_time - spawn_acceleration)
 		timer.start()
+	
+	if gunTimer.is_stopped():
+		spawnGun()
+		gunTimer.wait_time = max(gun_min_time_left, gunTimer.wait_time - spawn_acceleration)
+		gunTimer.start()		
 
 func spawnOpp() -> void:
 	var opp_instance = opp.instantiate()
@@ -41,3 +52,23 @@ func spawnOpp() -> void:
 	)
 
 	opp_instance.global_position = random_position
+
+func spawnGun() -> void:
+	var gun_instance = gun.instantiate()
+	get_tree().current_scene.add_child(gun_instance)
+	
+	var camera = get_viewport().get_camera_2d()
+	if not camera:
+		return	
+	
+	var camera_position = camera.global_position
+	
+	var random_position = Vector2(
+		randf_range(camera_position.x - 400, camera_position.x + 400),
+		randf_range(camera_position.y - 250, camera_position.y + 250)
+	)
+	
+	var random_rotation = randi_range(-15, 15)
+	
+	gun_instance.global_position = random_position
+	gun_instance.global_rotation_degrees = random_rotation

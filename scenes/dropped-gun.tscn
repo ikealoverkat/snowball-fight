@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://l5gqo7pe3h4a"]
+[gd_scene load_steps=6 format=3 uid="uid://l5gqo7pe3h4a"]
 
+[ext_resource type="Script" uid="uid://da6sadhmv6ggs" path="res://scripts/dropped_gun.gd" id="1_hwkg4"]
 [ext_resource type="Texture2D" uid="uid://dhjblusd21hdo" path="res://assets/big-gun.png" id="1_vy7pj"]
 [ext_resource type="Texture2D" uid="uid://b3qbmuhgv6lam" path="res://assets/machine-gun.png" id="2_nblr6"]
 
@@ -26,6 +27,8 @@ animations = [{
 }]
 
 [node name="Area2D" type="Area2D"]
+scale = Vector2(1.3313642, 1.3313642)
+script = ExtResource("1_hwkg4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hwkg4")
@@ -34,3 +37,5 @@ shape = SubResource("RectangleShape2D_hwkg4")
 scale = Vector2(0.05499999, 0.054999996)
 sprite_frames = SubResource("SpriteFrames_nqsg0")
 animation = &"big_gun"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
