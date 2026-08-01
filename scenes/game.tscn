@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0rxirx3rnao5"]
+[gd_scene load_steps=11 format=3 uid="uid://0rxirx3rnao5"]
 
 [ext_resource type="Script" uid="uid://eit0tedvyajq" path="res://scripts/game.gd" id="1_p57ef"]
 [ext_resource type="Texture2D" uid="uid://cilsqcovt3gs" path="res://assets/floor.png" id="2_ssvqc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://d4j3mn4dhtt1m" path="res://scripts/healthbar.gd" id="5_p57ef"]
 [ext_resource type="Texture2D" uid="uid://cxttpfiudk0gq" path="res://assets/cursor.png" id="6_p57ef"]
 [ext_resource type="Script" uid="uid://byhpmpb7gwud0" path="res://scripts/cursor.gd" id="7_u5sy4"]
+[ext_resource type="AudioStream" uid="uid://dfepj1cpagys0" path="res://sounds/music.mp3" id="8_gee14"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
 bg_color = Color(0.78145164, 0.82490134, 0.90140617, 1)
@@ -81,3 +82,10 @@ position = Vector2(325, 318.0001)
 scale = Vector2(0.07744106, 0.07744106)
 texture = ExtResource("6_p57ef")
 script = ExtResource("7_u5sy4")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_gee14")
+volume_db = 1.908
+autoplay = true
+max_polyphony = 10
+parameters/looping = true

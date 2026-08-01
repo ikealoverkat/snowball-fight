@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3qefmddcn0mj"]
+[gd_scene load_steps=12 format=3 uid="uid://c3qefmddcn0mj"]
 
 [ext_resource type="Texture2D" uid="uid://c5ka0mq5pvvuk" path="res://assets/lose_1.png" id="1_ali6q"]
 [ext_resource type="Script" uid="uid://cfo8texohfmhy" path="res://scripts/UI/loss_menu.gd" id="1_hcqw8"]
@@ -9,6 +9,7 @@
 [ext_resource type="StyleBox" uid="uid://cyjor6w1hffpw" path="res://scenes/UI/BOX.tres" id="6_shm43"]
 [ext_resource type="StyleBox" uid="uid://658dbw1ptqh1" path="res://scenes/UI/BOX_PRESS.tres" id="8_846q7"]
 [ext_resource type="StyleBox" uid="uid://5nd0eg8lrpcn" path="res://scenes/UI/BOX_HOVER.tres" id="9_72tun"]
+[ext_resource type="AudioStream" uid="uid://onbno3mrr724" path="res://sounds/damage.mp3" id="10_72tun"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_shm43"]
 animations = [{
@@ -92,6 +93,14 @@ theme_override_styles/pressed = ExtResource("8_846q7")
 theme_override_styles/hover = ExtResource("9_72tun")
 text = "play again
 "
+
+[node name="MenuSound" type="AudioStreamPlayer2D" parent="Node2D"]
+position = Vector2(-503, -185)
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_72tun")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="pressed" from="Node2D/menu" to="Node2D" method="_on_menu_pressed"]
 [connection signal="pressed" from="Node2D/play again" to="Node2D" method="_on_play_again_pressed"]

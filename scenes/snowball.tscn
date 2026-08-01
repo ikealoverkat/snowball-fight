@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0tqj1tggk0ng"]
+[gd_scene load_steps=5 format=3 uid="uid://d0tqj1tggk0ng"]
 
 [ext_resource type="Texture2D" uid="uid://bcfbtfkdsb1bt" path="res://assets/snowball.png" id="1_6tw0o"]
 [ext_resource type="Script" uid="uid://wnbi65pnbuub" path="res://scripts/snowball.gd" id="2_xsgkx"]
+[ext_resource type="AudioStream" uid="uid://onbno3mrr724" path="res://sounds/damage.mp3" id="3_dnn3y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xsgkx"]
 radius = 86.666664
@@ -20,6 +21,12 @@ scale = Vector2(0.15, 0.15)
 shape = SubResource("CircleShape2D_xsgkx")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="OppDamage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dnn3y")
+volume_db = 1.0
+pitch_scale = 3.0
+attenuation = 0.34151012
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

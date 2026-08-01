@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ck42ih8bjqe6o"]
+[gd_scene load_steps=19 format=3 uid="uid://ck42ih8bjqe6o"]
 
 [ext_resource type="Texture2D" uid="uid://dhjblusd21hdo" path="res://assets/big-gun.png" id="1_6oi81"]
 [ext_resource type="Texture2D" uid="uid://b3qbmuhgv6lam" path="res://assets/machine-gun.png" id="2_5lyo6"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bg3o75p3p1q1l" path="res://assets/throw-4.png" id="6_rrmri"]
 [ext_resource type="Texture2D" uid="uid://0cn52e4wyxep" path="res://assets/throw-5.png" id="7_gvx52"]
 [ext_resource type="Script" uid="uid://dq32cvth06rnc" path="res://scripts/gun.gd" id="8_fa1ey"]
+[ext_resource type="AudioStream" uid="uid://bsbot3pmtm0ui" path="res://sounds/big-gun.mp3" id="9_5lyo6"]
+[ext_resource type="AudioStream" uid="uid://draaiwgakggkf" path="res://sounds/machine-gun.mp3" id="10_lu2bp"]
+[ext_resource type="AudioStream" uid="uid://cdnggqmr0mb8m" path="res://sounds/throw.mp3" id="11_6hbmn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1kice"]
 animations = [{
@@ -213,3 +216,18 @@ autoplay = "throw_idle"
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="BigGun" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_5lyo6")
+pitch_scale = 1.18
+
+[node name="MachineGun" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_lu2bp")
+volume_db = 1.908
+pitch_scale = 1.37
+
+[node name="Throw" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_6hbmn")
+volume_db = 1.0
+pitch_scale = 1.6
+attenuation = 0.34151012

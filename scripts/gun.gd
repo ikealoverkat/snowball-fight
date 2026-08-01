@@ -61,6 +61,7 @@ func shoot() -> void:
 	snowball_instance.direction = (get_global_mouse_position() - global_position).normalized()		
 	snowball_instance.global_position = global_position + (snowball_instance.direction * 50.0)
 	snowball_instance.look_at(get_global_mouse_position())
+	$Throw.play()
 	play(Global.gun + "_active")
 	$AnimationPlayer.play(Global.gun + "_active")
 	await animation_finished
@@ -78,6 +79,7 @@ func shoot_big_gun():
 	snowball_instance.direction = (get_global_mouse_position() - global_position).normalized()		
 	snowball_instance.global_position = global_position + (snowball_instance.direction * 50.0)
 	snowball_instance.look_at(get_global_mouse_position())
+	$BigGun.play()
 	$AnimationPlayer.play(Global.gun + "_active")
 	await animation_finished
 	play(Global.gun + "_idle")
@@ -95,8 +97,9 @@ func shoot_machine_gun():
 	snowball_instance.global_position = global_position + (snowball_instance.direction * 50.0)
 	snowball_instance.look_at(get_global_mouse_position())
 	
+	$MachineGun.play()	
 	times_shot += 1	
-	
+		
 	if times_shot >= 35:
 		Global.gun = "throw"
 		is_mouse_held = false

@@ -19,6 +19,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Music.seek(0.0)
 	spawnOpp()
 	timer.wait_time = time_left
 	timer.start()

@@ -3,6 +3,7 @@ extends AnimatedSprite2D
 @export var snowball = load("res://scenes/snowball_burst.tscn")
 var player: Node2D = null
 @onready var evil = get_parent().get_parent()
+@onready var sound = $BurstSound
 
 @export var time_left: float = randf_range(1, 5)
 @onready var timer = $Timer
@@ -25,6 +26,7 @@ func _ready() -> void:
 
 func shoot() -> void:
 	var total_snowballs = 5
+	sound.play()
 	
 	for i in range(total_snowballs):
 		var angle = i * (TAU / total_snowballs) # TAU = pi*2

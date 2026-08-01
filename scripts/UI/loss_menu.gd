@@ -12,8 +12,10 @@ func _process(delta: float) -> void:
 
 
 func _on_menu_pressed() -> void:
+	$ButtonSound.play()
 	get_tree().change_scene_to_file("res://scenes/UI/menu.tscn")
 
 
 func _on_play_again_pressed() -> void:
+	$ButtonSound.play()
 	get_tree().change_scene_to_file("res://scenes/game.tscn")

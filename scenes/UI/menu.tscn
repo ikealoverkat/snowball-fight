@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2l7ue7w113i3"]
+[gd_scene load_steps=11 format=3 uid="uid://b2l7ue7w113i3"]
 
 [ext_resource type="Script" uid="uid://dtp3m0ltw2ntw" path="res://scripts/UI/menu.gd" id="1_u81ku"]
 [ext_resource type="FontFile" uid="uid://cjpxxvmif3xkg" path="res://assets/bad_handwriting.ttf" id="2_2un8v"]
@@ -8,6 +8,8 @@
 [ext_resource type="StyleBox" uid="uid://658dbw1ptqh1" path="res://scenes/UI/BOX_PRESS.tres" id="5_svcqa"]
 [ext_resource type="StyleBox" uid="uid://5nd0eg8lrpcn" path="res://scenes/UI/BOX_HOVER.tres" id="6_ofy2k"]
 [ext_resource type="PackedScene" uid="uid://cs3olfitn7xmv" path="res://scenes/player.tscn" id="8_ofy2k"]
+[ext_resource type="AudioStream" uid="uid://coykx7ud6twbw" path="res://sounds/click1.mp3" id="9_aklih"]
+[ext_resource type="AudioStream" uid="uid://bj2sv8tx2qfas" path="res://sounds/wind.mp3" id="9_ypw4e"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_u81ku")
@@ -40,5 +42,14 @@ text = "play"
 position = Vector2(539, 302)
 scale = Vector2(0.31477103, 0.31477103)
 texture = ExtResource("4_iysyy")
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_aklih")
+volume_db = 5.0
+
+[node name="Wind" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ypw4e")
+volume_db = 10.0
+autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

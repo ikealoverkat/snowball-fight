@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5wm7rbloph7u"]
+[gd_scene load_steps=14 format=3 uid="uid://5wm7rbloph7u"]
 
 [ext_resource type="Texture2D" uid="uid://cdmj4socv2xje" path="res://assets/win_1.png" id="1_5dbaq"]
 [ext_resource type="Script" uid="uid://cfo8texohfmhy" path="res://scripts/UI/loss_menu.gd" id="1_dv11s"]
@@ -9,6 +9,9 @@
 [ext_resource type="StyleBox" uid="uid://cyjor6w1hffpw" path="res://scenes/UI/BOX.tres" id="6_880jn"]
 [ext_resource type="StyleBox" uid="uid://658dbw1ptqh1" path="res://scenes/UI/BOX_PRESS.tres" id="8_3ww1o"]
 [ext_resource type="StyleBox" uid="uid://5nd0eg8lrpcn" path="res://scenes/UI/BOX_HOVER.tres" id="9_880jn"]
+[ext_resource type="AudioStream" uid="uid://coykx7ud6twbw" path="res://sounds/click1.mp3" id="10_880jn"]
+[ext_resource type="AudioStream" uid="uid://dfepj1cpagys0" path="res://sounds/music.mp3" id="11_w6qvv"]
+[ext_resource type="AudioStream" uid="uid://ch3bhlohvhkcb" path="res://sounds/yay.mp3" id="12_kvgva"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w6qvv"]
 animations = [{
@@ -92,6 +95,17 @@ theme_override_styles/pressed = ExtResource("8_3ww1o")
 theme_override_styles/hover = ExtResource("9_880jn")
 text = "play again
 "
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="Node2D"]
+stream = ExtResource("10_880jn")
+volume_db = 4.0
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_w6qvv")
+autoplay = true
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_kvgva")
 
 [connection signal="pressed" from="Node2D/menu" to="Node2D" method="_on_menu_pressed"]
 [connection signal="pressed" from="Node2D/play again" to="Node2D" method="_on_play_again_pressed"]

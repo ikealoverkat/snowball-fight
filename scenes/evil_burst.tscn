@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dtsug5mc5e3ne"]
+[gd_scene load_steps=35 format=3 uid="uid://dtsug5mc5e3ne"]
 
 [ext_resource type="Texture2D" uid="uid://bbdigs2c5xgju" path="res://assets/evil.png" id="1_t4s5b"]
 [ext_resource type="Script" uid="uid://djbh4qylyuhb7" path="res://scripts/evil_burst.gd" id="1_xxe0q"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://d3qjq2r8axjh5" path="res://assets/throw-grey-4.png" id="18_g4gj4"]
 [ext_resource type="Texture2D" uid="uid://c6t58t8g5vtm4" path="res://assets/throw-grey-5.png" id="19_6bfvh"]
 [ext_resource type="Script" uid="uid://dc2g8yl5dujcc" path="res://scripts/enemy_burst.gd" id="20_1aeyg"]
+[ext_resource type="AudioStream" uid="uid://bsbot3pmtm0ui" path="res://sounds/big-gun.mp3" id="21_1aeyg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8uusd"]
 animations = [{
@@ -461,6 +462,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_ssvqc")
 }
 autoplay = "throw_idle"
+
+[node name="BurstSound" type="AudioStreamPlayer2D" parent="Evil/Gun"]
+stream = ExtResource("21_1aeyg")
+pitch_scale = 0.38
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
