@@ -94,7 +94,7 @@ theme_override_styles/hover = ExtResource("9_72tun")
 text = "play again
 "
 
-[node name="MenuSound" type="AudioStreamPlayer2D" parent="Node2D"]
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="Node2D"]
 position = Vector2(-503, -185)
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]

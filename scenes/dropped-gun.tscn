@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://l5gqo7pe3h4a"]
+[gd_scene load_steps=7 format=3 uid="uid://l5gqo7pe3h4a"]
 
 [ext_resource type="Script" uid="uid://da6sadhmv6ggs" path="res://scripts/dropped_gun.gd" id="1_hwkg4"]
 [ext_resource type="Texture2D" uid="uid://dhjblusd21hdo" path="res://assets/big-gun.png" id="1_vy7pj"]
 [ext_resource type="Texture2D" uid="uid://b3qbmuhgv6lam" path="res://assets/machine-gun.png" id="2_nblr6"]
+[ext_resource type="AudioStream" uid="uid://du4gvrr18euiq" path="res://sounds/cool.mp3" id="4_au67i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwkg4"]
 size = Vector2(54, 20)
@@ -37,5 +38,11 @@ shape = SubResource("RectangleShape2D_hwkg4")
 scale = Vector2(0.05499999, 0.054999996)
 sprite_frames = SubResource("SpriteFrames_nqsg0")
 animation = &"big_gun"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(0.05499999, 0.054999996)
+stream = ExtResource("4_au67i")
+volume_db = -3.0
+pitch_scale = 1.73
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

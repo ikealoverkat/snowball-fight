@@ -92,7 +92,7 @@ func spawnBurstOpp() -> void:
 		
 	var camera_position = camera.global_position
 	var random_position = Vector2(
-		randf_range(camera_position.x - 400, camera_position.x + 400),
+		randf_range(camera_position.x - 100, camera_position.x + 400),
 		randf_range(camera_position.y - 250, camera_position.y + 250)
 	)
 

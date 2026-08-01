@@ -26,7 +26,6 @@ func _process(_delta: float) -> void:
 		timer.start()
 
 func _on_gun_change():
-	timer.wait_time = Global.default_time_left
 	times_shot = 0
 	print(Global.gun)
 	if Global.gun == "throw":
@@ -52,6 +51,7 @@ func turn() -> void:
 			flip_v = false
 
 func shoot() -> void:
+	timer.wait_time = 0.15	
 	Global.damageAmount = 2
 	var snowball_instance = snowball.instantiate()
 	get_tree().current_scene.add_child(snowball_instance)
