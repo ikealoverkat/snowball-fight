@@ -14,6 +14,11 @@ func _ready() -> void:
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		player = players[0]
+		
+	#	fade in		
+	modulate.a = 0.0
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, 0.5)	
 
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(player):
@@ -52,8 +57,12 @@ func take_damage(amount: int) -> void:
 func die() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
 	$AnimationPlayer.play("die")
-	await $AnimationPlayer.animation_finished
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, 0.4)
+	
+	#await tween.finished and await AnimationPlayer.animation_finished
 	queue_free()
+	
 
 func add_hurt_text(dmg):
 	var hurt_text_instance = hurt_text.instantiate()

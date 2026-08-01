@@ -1,6 +1,9 @@
 class_name Global
 extends Node
 
+static var time_elapsed = 0
+static var time_stored = 0
+
 #player.gd
 static var default_speed = 400
 static var default_taking_damage = false
@@ -17,6 +20,7 @@ static var playerHealth: int = playerHealthMax
 static var damageAmount: int = 2
 
 static func reset_game(current_node: Node) -> void:
+	time_elapsed = 0	
 	default_speed = 400
 	default_taking_damage = false
 	default_movement_angle = 0.0

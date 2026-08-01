@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2l7ue7w113i3"]
+
+[ext_resource type="Script" uid="uid://dtp3m0ltw2ntw" path="res://scripts/UI/menu.gd" id="1_u81ku"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_u81ku")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 503.0
+offset_top = 226.0
+offset_right = 682.0
+offset_bottom = 318.0
+text = "snowball fight"
+fit_content = true
+
+[node name="Button" type="Button" parent="."]
+offset_left = 480.0
+offset_top = 339.0
+offset_right = 641.0
+offset_bottom = 421.0
+text = "play"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

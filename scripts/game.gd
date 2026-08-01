@@ -31,7 +31,9 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	Global.time_elapsed += delta
+	
 	if timer.is_stopped():
 		spawnOpp()
 		

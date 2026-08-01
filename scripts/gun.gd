@@ -11,8 +11,6 @@ extends AnimatedSprite2D
 @export var times_shot: int = Global.default_times_shot
 var is_mouse_held: bool = false
 
-const Signals = preload("res://scripts/signals.gd")
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer.wait_time = time_left

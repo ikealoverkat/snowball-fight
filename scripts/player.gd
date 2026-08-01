@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 signal damaged
-signal died
 
 @export var hurt_text = load("res://scenes/hurt-text.tscn")
 
@@ -67,6 +66,17 @@ func take_damage(damage) -> void:
 	taking_damage = false
 	
 	if Global.playerHealth <= 0:
-		Global.playerHealth = 0		
-		Global.reset_game(self)
-	
+		die()
+
+
+func die() -> void:
+		Global.playerHealth = 0
+		Global.time_stored = Global.time_elapsed
+
+		if Global.time_elapsed >= 120:
+			get_tree().change_scene_to_file("res://scenes/UI/win.tscn")
+			# go to polaris
+		else:
+			get_tree().change_scene_to_file("res://scenes/UI/loss.tscn")
+		
+		Global.reset_game(self)	
