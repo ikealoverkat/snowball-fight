@@ -4,7 +4,7 @@ extends AnimatedSprite2D
 var player: Node2D = null
 @onready var evil = get_parent().get_parent()
 
-@export var time_left: float = randf_range(0.5, 4.0)
+@export var time_left: float = randf_range(1, 5)
 @onready var timer = $Timer
 
 # Called when the node enters the scene tree for the first time.
@@ -24,14 +24,25 @@ func _ready() -> void:
 	$AnimationPlayer.play("throw_idle")
 
 func shoot() -> void:
-	var snowball_instance = snowball.instantiate()
-	get_tree().current_scene.add_child(snowball_instance)
+	var total_snowballs = 5
 	
-	print(evil.character)
-	snowball_instance.position = position
-	snowball_instance.direction = (player.position - global_position).normalized()		
-	snowball_instance.global_position = global_position + (snowball_instance.direction * 50.0)
-	snowball_instance.look_at(player.position)
+	for i in range(total_snowballs):
+		var angle = i * (TAU / total_snowballs) # TAU = pi*2
+		
+		var snowball_instance = snowball.instantiate()
+		get_tree().current_scene.add_child(snowball_instance)
+		
+		snowball_instance.scale = Vector2(1.5, 1.5) 
+		
+		snowball_instance.global_position = global_position
+		
+		var dir = Vector2(cos(angle), sin(angle))
+		
+		snowball_instance.direction = dir
+			
+		snowball_instance.rotation = angle
+
+
 	play(evil.character + "_throw_active")
 	$AnimationPlayer.play("throw_active")
 	await animation_finished

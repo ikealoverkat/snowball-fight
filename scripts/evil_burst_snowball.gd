@@ -6,8 +6,7 @@ var direction: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	scale = Vector2(randf_range(0.9, 1.2), randf_range(0.9, 1.2))
-	speed = randi_range(300, 500)
+	pass
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -19,4 +18,4 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func _on_body_entered(body) -> void:
 	if body.is_in_group("player"):
 		if body.has_method("take_damage"):
-			body.take_damage(4)
+			body.take_damage(2)

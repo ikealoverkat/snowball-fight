@@ -69,3 +69,5 @@ one_shot = true
 
 [node name="Timer2" type="Timer" parent="."]
 one_shot = true
+
+[node name="Timer3" type="Timer" parent="."]

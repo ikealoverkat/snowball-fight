@@ -1,11 +1,9 @@
 extends CharacterBody2D
 
-@export var health = randi_range(4, 10)
-@export var speed: float = 50.0
-@export var max_speed: float = 150.0 
-@export var speed_acceleration: float = 0.5 
+@export var health = randi_range(3, 7)
 @export var hurt_text = load("res://scenes/hurt-text.tscn")
 @export var character: String
+@export var speed = 50
 
 var player: Node2D = null
 var wander_timer: float = 0.0
@@ -22,8 +20,6 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
-
-	speed = min(max_speed, speed + (speed_acceleration * delta))
 
 	wander_timer -= delta
 	if wander_timer <= 0:

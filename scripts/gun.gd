@@ -69,7 +69,7 @@ func shoot() -> void:
 
 func shoot_big_gun():
 	timer.wait_time = 0.4
-	Global.damageAmount = randi_range(5, 7)		
+	Global.damageAmount = randi_range(3, 7)		
 	var snowball_instance = snowball.instantiate()
 	get_tree().current_scene.add_child(snowball_instance)
 	
@@ -98,7 +98,7 @@ func shoot_machine_gun():
 	
 	times_shot += 1	
 	
-	if times_shot >= 90:
+	if times_shot >= 35:
 		Global.gun = "throw"
 		is_mouse_held = false
 		_on_gun_change()	
@@ -119,7 +119,7 @@ func _input(event: InputEvent) -> void:
 			elif Global.gun == "big_gun" and timer.is_stopped():
 				shoot_big_gun()
 				times_shot += 1
-				if times_shot >= 25:
+				if times_shot >= 15:
 					Global.gun = "throw"
 		else:
 			is_mouse_held = false	
