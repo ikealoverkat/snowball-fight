@@ -26,6 +26,7 @@ func _process(_delta: float) -> void:
 		timer.start()
 
 func _on_gun_change():
+	timer.wait_time = Global.default_time_left
 	times_shot = 0
 	print(Global.gun)
 	if Global.gun == "throw":

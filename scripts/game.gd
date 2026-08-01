@@ -4,14 +4,14 @@ extends Node2D
 @onready var gunTimer = $Timer2
 @onready var burstTimer = $Timer3
 
-@export var time_left: float = randf_range(5.0, 6.5)
-@export var min_time_left: float = 2.0
-@export var spawn_acceleration: float = 0.5
+@export var time_left: float = 2.5
+@export var min_time_left: float = 1.0
+@export var spawn_acceleration: float = 0.4
 
 @export var gun_time_left: float = randf_range(10.0, 20.0)
 
-@export var burst_time_left: float = randf_range(9.0, 12.0)
-@export var min_burst_time_left: float = 3.0
+@export var burst_time_left: float = 4.0
+@export var min_burst_time_left: float = 1.0
 
 @export var opp = load("res://scenes/evil.tscn")
 @export var burst_opp = load("res://scenes/evil_burst.tscn")
@@ -19,6 +19,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	spawnOpp()
 	timer.wait_time = time_left
 	timer.start()
 	

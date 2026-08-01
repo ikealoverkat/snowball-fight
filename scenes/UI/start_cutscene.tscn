@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://17wn1ovfd420"]
+[gd_scene load_steps=12 format=3 uid="uid://17wn1ovfd420"]
 
 [ext_resource type="Script" uid="uid://drmqmtyuudiup" path="res://scripts/UI/start_cutscene.gd" id="1_4g2ur"]
 [ext_resource type="Texture2D" uid="uid://chnciop5nxr4o" path="res://assets/cutscene_1.png" id="2_6ngly"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cyqha0louvy53" path="res://assets/cutscene_3.png" id="4_hvtwj"]
 [ext_resource type="Texture2D" uid="uid://xxda8l51cm8" path="res://assets/cutscene_4.png" id="5_80m2a"]
 [ext_resource type="Texture2D" uid="uid://ce6druw8pgy1" path="res://assets/cutscene_5.png" id="6_ko0vw"]
+[ext_resource type="FontFile" uid="uid://cjpxxvmif3xkg" path="res://assets/bad_handwriting.ttf" id="7_mqyrx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4g2ur"]
 animations = [{
@@ -30,6 +31,12 @@ animations = [{
 "speed": 0.5
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hvtwj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_80m2a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ko0vw"]
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_4g2ur")
 
@@ -41,3 +48,22 @@ offset_bottom = 671.0
 position = Vector2(562, 328)
 scale = Vector2(0.33536592, 0.33536586)
 sprite_frames = SubResource("SpriteFrames_4g2ur")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 988.0
+offset_top = 19.0
+offset_right = 1117.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_focus_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_pressed_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_hover_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_fonts/font = ExtResource("7_mqyrx")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hvtwj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_80m2a")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ko0vw")
+text = "SKIP >>>"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -10,14 +10,14 @@ static var default_taking_damage = false
 static var default_movement_angle = 0.0
 
 #gun.gd
-static var default_time_left = 0.2
+static var default_time_left = 0.15
 static var default_times_shot = 0
 
 static var distance: float = 0
 static var gun: String = "throw"
-static var playerHealthMax: int = 50
-static var playerHealth: int = playerHealthMax
-static var damageAmount: int = 2
+static var playerHealthMax: float = 50
+static var playerHealth: float = playerHealthMax
+static var damageAmount: float = 2
 
 static func reset_game(current_node: Node) -> void:
 	time_elapsed = 0	

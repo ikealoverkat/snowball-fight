@@ -53,6 +53,8 @@ func _physics_process(delta: float) -> void:
 	get_input(delta)
 	turn(delta)
 	move_and_slide()
+	if Global.playerHealth < 50:
+		Global.playerHealth += 0.0005
 
 func take_damage(damage) -> void:
 	Global.playerHealth = Global.playerHealth - damage

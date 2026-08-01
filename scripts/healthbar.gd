@@ -12,4 +12,4 @@ func _on_character_damage_taken():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	value = Global.playerHealth	
