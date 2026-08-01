@@ -7,20 +7,19 @@ extends Node2D
 @export var min_time_left: float = 2.0
 @export var spawn_acceleration: float = 0.2
 
-@export var gun_time_left: float = 10.0
-@export var gun_min_time_left: float = 6.0
-@export var gun_spawn_acceleration: float = 0.2
+@export var gun_time_left: float = randf_range(10.0, 20.0)
 @export var opp = load("res://scenes/evil.tscn")
 @export var gun = load("res://scenes/dropped-gun.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer.wait_time = time_left
-	timer.start() # Ensure timer starts right away
+	timer.start()
 	spawnOpp()
 	
 	gunTimer.wait_time = gun_time_left
 	gunTimer.start()
+	print("timer started")
 	spawnGun()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,7 +32,7 @@ func _process(_delta: float) -> void:
 	
 	if gunTimer.is_stopped():
 		spawnGun()
-		gunTimer.wait_time = max(gun_min_time_left, gunTimer.wait_time - spawn_acceleration)
+		gunTimer.wait_time = gun_time_left
 		gunTimer.start()		
 
 func spawnOpp() -> void:

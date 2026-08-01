@@ -57,6 +57,7 @@ func shoot() -> void:
 	var snowball_instance = snowball.instantiate()
 	get_tree().current_scene.add_child(snowball_instance)
 	
+	snowball_instance.speed = 600	
 	snowball_instance.position = position
 	snowball_instance.direction = (get_global_mouse_position() - global_position).normalized()		
 	snowball_instance.global_position = global_position + (snowball_instance.direction * 50.0)
@@ -72,6 +73,7 @@ func shoot_big_gun():
 	var snowball_instance = snowball.instantiate()
 	get_tree().current_scene.add_child(snowball_instance)
 	
+	snowball_instance.speed = 400
 	snowball_instance.scale = Vector2(1.15, 1.15)
 	snowball_instance.position = position
 	snowball_instance.direction = (get_global_mouse_position() - global_position).normalized()		
@@ -88,11 +90,13 @@ func shoot_machine_gun():
 	get_tree().current_scene.add_child(snowball_instance)
 	
 	snowball_instance.scale = Vector2(0.65, 0.65)
-	snowball_instance.speed = snowball_instance.speed * 1.5
+	snowball_instance.speed = 850
 	snowball_instance.position = position
 	snowball_instance.direction = (get_global_mouse_position() - global_position).normalized()		
 	snowball_instance.global_position = global_position + (snowball_instance.direction * 50.0)
 	snowball_instance.look_at(get_global_mouse_position())
+	
+	times_shot += 1	
 	
 	if times_shot >= 90:
 		Global.gun = "throw"
@@ -115,7 +119,7 @@ func _input(event: InputEvent) -> void:
 			elif Global.gun == "big_gun" and timer.is_stopped():
 				shoot_big_gun()
 				times_shot += 1
-				if times_shot >= 50:
+				if times_shot >= 25:
 					Global.gun = "throw"
 		else:
 			is_mouse_held = false	
