@@ -1,34 +1,95 @@
-[gd_scene load_steps=2 format=3 uid="uid://5wm7rbloph7u"]
+[gd_scene load_steps=11 format=3 uid="uid://5wm7rbloph7u"]
 
+[ext_resource type="Texture2D" uid="uid://cdmj4socv2xje" path="res://assets/win_1.png" id="1_5dbaq"]
 [ext_resource type="Script" uid="uid://cfo8texohfmhy" path="res://scripts/UI/loss_menu.gd" id="1_dv11s"]
+[ext_resource type="Script" uid="uid://c857be45mu3n2" path="res://scripts/UI/loss.gd" id="1_hoxmn"]
+[ext_resource type="Texture2D" uid="uid://dc73jmtbijehc" path="res://assets/win_2.png" id="2_hoxmn"]
+[ext_resource type="Texture2D" uid="uid://wfhdv80s8cyr" path="res://assets/win_3.png" id="3_30rid"]
+[ext_resource type="FontFile" uid="uid://cjpxxvmif3xkg" path="res://assets/bad_handwriting.ttf" id="5_3ww1o"]
+[ext_resource type="StyleBox" uid="uid://cyjor6w1hffpw" path="res://scenes/UI/BOX.tres" id="6_880jn"]
+[ext_resource type="StyleBox" uid="uid://658dbw1ptqh1" path="res://scenes/UI/BOX_PRESS.tres" id="8_3ww1o"]
+[ext_resource type="StyleBox" uid="uid://5nd0eg8lrpcn" path="res://scenes/UI/BOX_HOVER.tres" id="9_880jn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w6qvv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5dbaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hoxmn")
+}, {
+"duration": 0.2,
+"texture": ExtResource("3_30rid")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.5
+}]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_hoxmn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1162.0
+offset_bottom = 671.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(683.00006, 321)
+scale = Vector2(0.26250005, 0.26250002)
+sprite_frames = SubResource("SpriteFrames_w6qvv")
+autoplay = "default"
+frame = 2
+frame_progress = 0.8144943
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 position = Vector2(503, 185)
 script = ExtResource("1_dv11s")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Node2D"]
-offset_left = -23.0
-offset_right = 156.0
-offset_bottom = 92.0
-text = "u won hurray
-
-your score: (time)"
+offset_left = -354.0
+offset_top = 47.0
+offset_right = 306.0
+offset_bottom = 102.0
+theme_override_colors/default_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_fonts/normal_font = ExtResource("5_3ww1o")
+theme_override_font_sizes/normal_font_size = 40
+text = "cool"
 fit_content = true
 
 [node name="menu" type="Button" parent="Node2D"]
-offset_left = -23.0
-offset_top = 113.0
-offset_right = 138.0
-offset_bottom = 195.0
+offset_left = -296.0
+offset_top = 243.0
+offset_right = -135.0
+offset_bottom = 325.0
+theme_override_colors/font_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_focus_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_pressed_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_hover_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_fonts/font = ExtResource("5_3ww1o")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("6_880jn")
+theme_override_styles/pressed = ExtResource("8_3ww1o")
+theme_override_styles/hover = ExtResource("9_880jn")
 text = "back to menu"
 
 [node name="play again" type="Button" parent="Node2D"]
-offset_left = -23.0
-offset_top = 226.0
-offset_right = 138.0
-offset_bottom = 308.0
+offset_left = -296.0
+offset_top = 121.0
+offset_right = -135.0
+offset_bottom = 203.0
+theme_override_colors/font_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_focus_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_pressed_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_hover_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_fonts/font = ExtResource("5_3ww1o")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("6_880jn")
+theme_override_styles/pressed = ExtResource("8_3ww1o")
+theme_override_styles/hover = ExtResource("9_880jn")
 text = "play again
 "
 

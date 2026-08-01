@@ -1,23 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2l7ue7w113i3"]
+[gd_scene load_steps=9 format=3 uid="uid://b2l7ue7w113i3"]
 
 [ext_resource type="Script" uid="uid://dtp3m0ltw2ntw" path="res://scripts/UI/menu.gd" id="1_u81ku"]
+[ext_resource type="FontFile" uid="uid://cjpxxvmif3xkg" path="res://assets/bad_handwriting.ttf" id="2_2un8v"]
+[ext_resource type="Texture2D" uid="uid://cilsqcovt3gs" path="res://assets/floor.png" id="2_ny0ke"]
+[ext_resource type="StyleBox" uid="uid://cyjor6w1hffpw" path="res://scenes/UI/BOX.tres" id="3_iysyy"]
+[ext_resource type="Texture2D" uid="uid://dk1dkrly0cgxs" path="res://assets/Untitled321_20260731235229.png" id="4_iysyy"]
+[ext_resource type="StyleBox" uid="uid://658dbw1ptqh1" path="res://scenes/UI/BOX_PRESS.tres" id="5_svcqa"]
+[ext_resource type="StyleBox" uid="uid://5nd0eg8lrpcn" path="res://scenes/UI/BOX_HOVER.tres" id="6_ofy2k"]
+[ext_resource type="PackedScene" uid="uid://cs3olfitn7xmv" path="res://scenes/player.tscn" id="8_ofy2k"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_u81ku")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 503.0
-offset_top = 226.0
-offset_right = 682.0
-offset_bottom = 318.0
-text = "snowball fight"
-fit_content = true
+[node name="Floor" type="Sprite2D" parent="."]
+position = Vector2(2211, 321)
+texture = ExtResource("2_ny0ke")
+
+[node name="Player" parent="." instance=ExtResource("8_ofy2k")]
+position = Vector2(105, 539)
 
 [node name="Button" type="Button" parent="."]
-offset_left = 480.0
-offset_top = 339.0
-offset_right = 641.0
-offset_bottom = 421.0
+offset_left = 469.0
+offset_top = 429.0
+offset_right = 630.0
+offset_bottom = 511.0
+theme_override_colors/font_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_focus_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_pressed_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_hover_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.11764706, 0.23529412, 0.56078434, 1)
+theme_override_fonts/font = ExtResource("2_2un8v")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("3_iysyy")
+theme_override_styles/pressed = ExtResource("5_svcqa")
+theme_override_styles/hover = ExtResource("6_ofy2k")
 text = "play"
+
+[node name="Untitled32120260731235229" type="Sprite2D" parent="."]
+position = Vector2(539, 302)
+scale = Vector2(0.31477103, 0.31477103)
+texture = ExtResource("4_iysyy")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

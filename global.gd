@@ -31,7 +31,6 @@ static func reset_game(current_node: Node) -> void:
 
 	distance  = 0
 	gun = "throw"
-	playerHealthMax = 50
 	playerHealth  = playerHealthMax
 	damageAmount = 2
 	
