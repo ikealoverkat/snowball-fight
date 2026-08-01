@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://17wn1ovfd420"]
+
+[ext_resource type="Script" uid="uid://drmqmtyuudiup" path="res://scripts/UI/start_cutscene.gd" id="1_4g2ur"]
+[ext_resource type="Texture2D" uid="uid://cojboywrj6shn" path="res://assets/player-2.png" id="1_gdgrd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4g2ur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gdgrd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_4g2ur")
+
+[node name="Animated" type="AnimatedSprite2D" parent="."]
+position = Vector2(541, 307)
+scale = Vector2(0.3985045, 0.3985045)
+sprite_frames = SubResource("SpriteFrames_4g2ur")
