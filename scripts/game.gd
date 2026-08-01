@@ -13,14 +13,15 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	spawnOpp()	
+	
 	timer.wait_time = time_left
 	timer.start()
-	spawnOpp()
+	print("timer started")
 	
 	gunTimer.wait_time = gun_time_left
 	gunTimer.start()
 	print("timer started")
-	spawnGun()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -37,7 +38,13 @@ func _process(_delta: float) -> void:
 
 func spawnOpp() -> void:
 	var opp_instance = opp.instantiate()
-	get_tree().current_scene.add_child(opp_instance)
+	
+	var random_number = randi_range(0, 1)
+	print(random_number)
+	if random_number == 1:
+		opp_instance.character = "yellow"
+	elif random_number == 0:
+		opp_instance.character = "grey"	
 	
 	var camera = get_viewport().get_camera_2d()
 	if not camera:
@@ -51,6 +58,8 @@ func spawnOpp() -> void:
 	)
 
 	opp_instance.global_position = random_position
+	
+	get_tree().current_scene.add_child(opp_instance)	
 
 func spawnGun() -> void:
 	var gun_instance = gun.instantiate()

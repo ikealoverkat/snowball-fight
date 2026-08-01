@@ -38,7 +38,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_ntnk4")
 }],
-"loop": false,
+"loop": true,
 "name": &"grey_hit",
 "speed": 5.0
 }, {
@@ -444,12 +444,14 @@ position = Vector2(0, 1)
 scale = Vector2(0.13565892, 0.13565892)
 sprite_frames = SubResource("SpriteFrames_8uusd")
 animation = &"yellow_default"
+autoplay = "yellow_default"
 
 [node name="Gun" type="AnimatedSprite2D" parent="Evil"]
 position = Vector2(72.36844, 65.78945)
 scale = Vector2(0.46710518, 0.46710518)
 sprite_frames = SubResource("SpriteFrames_5hwsq")
-animation = &"yellow_throw_idle"
+animation = &"grey_throw_active"
+autoplay = "yellow_throw_idle"
 offset = Vector2(219.29834, 0)
 script = ExtResource("12_2shto")
 

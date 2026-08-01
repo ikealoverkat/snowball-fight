@@ -1,11 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://3j3ivo3mt68m"]
+[gd_scene load_steps=26 format=3 uid="uid://buxtba5hj372g"]
 
 [ext_resource type="Script" uid="uid://cqlp3evpraxqb" path="res://scripts/evil.gd" id="1_7mqv5"]
 [ext_resource type="Texture2D" uid="uid://bbdigs2c5xgju" path="res://assets/evil.png" id="1_t4s5b"]
-[ext_resource type="Texture2D" uid="uid://cm6haldrw8d3n" path="res://assets/grey.png" id="2_usk2r"]
 [ext_resource type="Texture2D" uid="uid://3idxxg2tww76" path="res://assets/evil-hit-2.png" id="3_l7c6x"]
-[ext_resource type="Texture2D" uid="uid://dyp63fe1xrhgy" path="res://assets/grey-hit-2.png" id="3_y3dhu"]
-[ext_resource type="Texture2D" uid="uid://dcm5h3goyu3q4" path="res://assets/grey-hit.png" id="4_ntnk4"]
 [ext_resource type="Texture2D" uid="uid://04u0g2lmuhss" path="res://assets/evil-hit.png" id="4_rt2iu"]
 [ext_resource type="Texture2D" uid="uid://dhjblusd21hdo" path="res://assets/big-gun.png" id="5_2shto"]
 [ext_resource type="Texture2D" uid="uid://b3qbmuhgv6lam" path="res://assets/machine-gun.png" id="6_sujnm"]
@@ -15,39 +12,15 @@
 [ext_resource type="Texture2D" uid="uid://bg3o75p3p1q1l" path="res://assets/throw-4.png" id="10_ntnk4"]
 [ext_resource type="Texture2D" uid="uid://0cn52e4wyxep" path="res://assets/throw-5.png" id="11_ixypk"]
 [ext_resource type="Script" uid="uid://byl7ksfrp8n0a" path="res://scripts/enemy_follow.gd" id="12_2shto"]
-[ext_resource type="Texture2D" uid="uid://c34wibg7t5363" path="res://assets/throw-grey-1.png" id="15_5hwsq"]
-[ext_resource type="Texture2D" uid="uid://c8nswbdjfg7tg" path="res://assets/throw-grey-2.png" id="16_s07wr"]
-[ext_resource type="Texture2D" uid="uid://bo1jjhnlt388f" path="res://assets/throw-grey-3.png" id="17_hccjn"]
-[ext_resource type="Texture2D" uid="uid://d3qjq2r8axjh5" path="res://assets/throw-grey-4.png" id="18_g4gj4"]
-[ext_resource type="Texture2D" uid="uid://c6t58t8g5vtm4" path="res://assets/throw-grey-5.png" id="19_6bfvh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8uusd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_usk2r")
-}],
-"loop": true,
-"name": &"grey_default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_y3dhu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_ntnk4")
-}],
-"loop": false,
-"name": &"grey_hit",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("1_t4s5b")
 }],
 "loop": true,
-"name": &"yellow_default",
+"name": &"default",
 "speed": 5.0
 }, {
 "frames": [{
@@ -61,7 +34,7 @@ animations = [{
 "texture": ExtResource("3_l7c6x")
 }],
 "loop": false,
-"name": &"yellow_hit",
+"name": &"hit",
 "speed": 7.0
 }]
 
@@ -73,37 +46,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"big_gun",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_5hwsq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_s07wr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_hccjn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_g4gj4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_6bfvh")
-}],
-"loop": false,
-"name": &"grey_throw_active",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_5hwsq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_s07wr")
-}],
-"loop": true,
-"name": &"grey_throw_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -131,7 +73,7 @@ animations = [{
 "texture": ExtResource("11_ixypk")
 }],
 "loop": false,
-"name": &"yellow_throw_active",
+"name": &"throw_active",
 "speed": 8.0
 }, {
 "frames": [{
@@ -142,7 +84,7 @@ animations = [{
 "texture": ExtResource("8_usk2r")
 }],
 "loop": true,
-"name": &"yellow_throw_idle",
+"name": &"throw_idle",
 "speed": 5.0
 }]
 
@@ -443,13 +385,14 @@ script = ExtResource("1_7mqv5")
 position = Vector2(0, 1)
 scale = Vector2(0.13565892, 0.13565892)
 sprite_frames = SubResource("SpriteFrames_8uusd")
-animation = &"yellow_default"
+autoplay = "default"
 
 [node name="Gun" type="AnimatedSprite2D" parent="Evil"]
 position = Vector2(72.36844, 65.78945)
 scale = Vector2(0.46710518, 0.46710518)
 sprite_frames = SubResource("SpriteFrames_5hwsq")
-animation = &"yellow_throw_idle"
+animation = &"throw_active"
+autoplay = "throw_idle"
 offset = Vector2(219.29834, 0)
 script = ExtResource("12_2shto")
 

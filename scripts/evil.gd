@@ -3,13 +3,14 @@ extends CharacterBody2D
 @export var health = randi_range(4, 10)
 @export var speed: float = 50.0
 @export var hurt_text = load("res://scenes/hurt-text.tscn")
+@export var character: String
 
 var player: Node2D = null
 var wander_timer: float = 0.0
 var random_offset: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
-	# Find the player using the "player" group
+	$Evil.play(character + "_default")	
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		player = players[0]
@@ -44,9 +45,9 @@ func take_damage(amount: int) -> void:
 		
 	add_hurt_text(amount)
 	$AnimationPlayer.play("hit")		
-	$Evil.play("hit")
+	$Evil.play(character + "_hit")
 	await $Evil.animation_finished
-	$Evil.play("default")
+	$Evil.play(character + "_default")
 		
 func die() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
