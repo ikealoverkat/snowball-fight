@@ -4,7 +4,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var randomNumber = randi_range(1,1)
+	var randomNumber = randi_range(0, 1)
 	if randomNumber == 1:
 		$AnimatedSprite2D.play("big_gun")
 		droppedGun = "big_gun"
