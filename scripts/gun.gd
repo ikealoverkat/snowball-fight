@@ -5,10 +5,10 @@ extends AnimatedSprite2D
 @onready var mouseposition = get_global_mouse_position()
 @onready var angle = wrapf(rotation_degrees, 0.0, 360.0)
 
-@export var time_left: float = 0.2
+@export var time_left: float = Global.default_time_left
 @onready var timer = $Timer
 
-@export var times_shot: int = 0
+@export var times_shot: int = Global.default_times_shot
 var is_mouse_held: bool = false
 
 const Signals = preload("res://scripts/signals.gd")

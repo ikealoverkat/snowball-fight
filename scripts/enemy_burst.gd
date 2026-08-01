@@ -32,7 +32,7 @@ func shoot() -> void:
 		var snowball_instance = snowball.instantiate()
 		get_tree().current_scene.add_child(snowball_instance)
 		
-		snowball_instance.scale = Vector2(1.5, 1.5) 
+		snowball_instance.scale = Vector2(1.35, 1.35) 
 		
 		snowball_instance.global_position = global_position
 		

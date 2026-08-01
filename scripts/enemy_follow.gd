@@ -9,7 +9,6 @@ var player: Node2D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	shoot()
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		player = players[0]
@@ -24,10 +23,16 @@ func _ready() -> void:
 	$AnimationPlayer.play("throw_idle")
 
 func shoot() -> void:
+	if not is_instance_valid(player):
+		var players = get_tree().get_nodes_in_group("player")
+		if players.size() > 0:
+			player = players[0]
+		else:
+			return
+	
 	var snowball_instance = snowball.instantiate()
 	get_tree().current_scene.add_child(snowball_instance)
 	
-	print(evil.character)
 	snowball_instance.position = position
 	snowball_instance.direction = (player.position - global_position).normalized()		
 	snowball_instance.global_position = global_position + (snowball_instance.direction * 50.0)

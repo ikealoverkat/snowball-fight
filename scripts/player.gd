@@ -1,16 +1,17 @@
 extends CharacterBody2D
 
 signal damaged
+signal died
 
 @export var hurt_text = load("res://scenes/hurt-text.tscn")
 
-@export var speed = 400
+@export var speed = Global.default_speed
 @export var mouseposition: Vector2
 @export var turn_speed: float = 5.0
-var taking_damage = false
+var taking_damage = Global.default_taking_damage
 
 const MAX_TURN_ANGLE = deg_to_rad(15.0)
-var movement_angle: float = 0.0
+var movement_angle: float = Global.default_movement_angle
 
 func _ready() -> void:
 	$Player.flip_h = true
@@ -67,5 +68,5 @@ func take_damage(damage) -> void:
 	
 	if Global.playerHealth <= 0:
 		Global.playerHealth = 0		
-		emit_signal("died")
+		Global.reset_game(self)
 	
