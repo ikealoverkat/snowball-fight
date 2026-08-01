@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-@export var snowball = load("res://scenes/evil_snowball.tscn")
+@export var snowball = load("res://scenes/snowball_burst.tscn")
 var player: Node2D = null
 @onready var evil = get_parent().get_parent()
 
