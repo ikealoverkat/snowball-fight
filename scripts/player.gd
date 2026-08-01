@@ -68,3 +68,4 @@ func take_damage(damage) -> void:
 	if Global.playerHealth <= 0:
 		Global.playerHealth = 0		
 		emit_signal("died")
+	
