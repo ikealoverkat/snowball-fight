@@ -75,7 +75,7 @@ func die() -> void:
 		Global.playerHealth = 0
 		Global.time_stored = Global.time_elapsed
 
-		if Global.time_elapsed >= 120:
+		if Global.time_elapsed >= 100:
 			get_tree().change_scene_to_file("res://scenes/UI/win.tscn")
 			# go to polaris
 		else:

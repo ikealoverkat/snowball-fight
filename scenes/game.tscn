@@ -1,13 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://0rxirx3rnao5"]
+[gd_scene load_steps=13 format=3 uid="uid://0rxirx3rnao5"]
 
 [ext_resource type="Script" uid="uid://eit0tedvyajq" path="res://scripts/game.gd" id="1_p57ef"]
 [ext_resource type="Texture2D" uid="uid://cilsqcovt3gs" path="res://assets/floor.png" id="2_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://cs3olfitn7xmv" path="res://scenes/player.tscn" id="3_lbhrr"]
 [ext_resource type="Script" uid="uid://u3v3n2l0e4tt" path="res://scripts/camera.gd" id="5_iywne"]
 [ext_resource type="Script" uid="uid://d4j3mn4dhtt1m" path="res://scripts/healthbar.gd" id="5_p57ef"]
+[ext_resource type="Texture2D" uid="uid://bcfbtfkdsb1bt" path="res://assets/snowball.png" id="6_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://cxttpfiudk0gq" path="res://assets/cursor.png" id="6_p57ef"]
 [ext_resource type="Script" uid="uid://byhpmpb7gwud0" path="res://scripts/cursor.gd" id="7_u5sy4"]
 [ext_resource type="AudioStream" uid="uid://dfepj1cpagys0" path="res://sounds/music.mp3" id="8_gee14"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtaks"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
 bg_color = Color(0.78145164, 0.82490134, 0.90140617, 1)
@@ -38,6 +41,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="game" type="Node2D"]
+material = SubResource("ShaderMaterial_vtaks")
 script = ExtResource("1_p57ef")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
@@ -54,6 +58,23 @@ position = Vector2(116, 347)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(583, 318)
 script = ExtResource("5_iywne")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Camera2D"]
+position = Vector2(-197, -297)
+amount = 40
+texture = ExtResource("6_0tnpc")
+lifetime = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(800, 50)
+gravity = Vector2(200, 300)
+initial_velocity_max = 100.0
+angular_velocity_min = -356.29
+angular_velocity_max = 252.37
+angle_min = -25.0
+angle_max = 25.0
+scale_amount_min = 0.07
+scale_amount_max = 0.1
+color = Color(1, 1, 1, 0.25490198)
 
 [node name="Healthbar" type="ProgressBar" parent="Camera2D"]
 offset_left = -542.0
