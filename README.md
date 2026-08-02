@@ -2,7 +2,7 @@
 
 a side-scrolling shooter/bullet-hell adjacent game set in toronto, but instead of shooting bullets, you run into a group of three miskeens that want to throw lots and lots of snowballs at you. 
 
-i want to go to [horizons polaris](horizons.hackclub.com)
+why toronto? because i want to go to [horizons polaris](horizons.hackclub.com)
 
 made in godot 4!
 
